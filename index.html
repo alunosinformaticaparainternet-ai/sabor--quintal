@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Quintal - Para Toda a Família</title>
+    
+    <!-- Google Fonts para manter a tipografia fiel ao PDF -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones das Redes Sociais (Rodapé) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Arquivo CSS externo (que faremos a seguir) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- =================================================================== -->
+    <!-- PARTE 1: PÁGINA INICIAL (PÁGINAS 1 A 6 DO PDF)                      -->
+    <!-- =================================================================== -->
+    <div id="pagina-inicial">
+
+        <!-- PÁGINA 1: HERO / CAPA -->
+        <header id="inicio" class="hero-section">
+            <!-- Imagem de fundo da Página 1 -->
+            <div class="hero-bg">
+                <img src="imagens/are.png" alt="Ambiente Sabor Quintal">
+            </div>
+
+            <!-- Menu de Navegação Superior -->
+            <nav class="navbar">
+                <a href="#inicio" class="logo-top">
+                    <!-- Coloque aqui o arquivo da sua logo -->
+                    <img src="imagens/logo.png" alt="Logo Sabor Quintal">
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#nossa-historia">Nossa História</a></li>
+                    <li class="nav-destaque">
+                        <a href="#reservas">Reservas</a>
+                        <span class="divisor">|</span>
+                        <a href="#cardapio" class="btn-abrir-cardapio">Cardápio</a>
+                    </li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#ajuda">Ajuda</a></li>
+                </ul>
+            </nav>
+
+            <!-- Título Central da Página 1 -->
+            <div class="hero-content">
+                <h1 class="hero-title">Sabor Quintal</h1>
+                <p class="hero-subtitle">Para Toda a Família</p>
+            </div>
+        </header>
+
+        <!-- PÁGINA 2: NOSSA HISTÓRIA -->
+        <section id="nossa-historia" class="historia-section">
+            <div class="historia-container">
+                
+                <!-- Coluna da Esquerda: Foto em cima, Texto embaixo -->
+                <div class="historia-coluna">
+                    <div class="historia-img-wrapper">
+                        <img src="imagens/main.jpg" alt="cu">
+                    </div>
+                    <p class="historia-texto">
+                        Temos opções para todos os gostos e estilos de alimentação! Nosso cardápio conta com pratos vegetarianos, veganos, carnes, massas, e diversas outras opções deliciosas!
+                    </p>
+                </div>
+
+                <!-- Coluna da Direita: Texto em cima, Foto embaixo -->
+                <div class="historia-coluna">
+                    <p class="historia-texto">
+                        Nosso quintal vem transformando sabores em memórias inesqueciveis. Com o nosso cardápio completo, da entrada, à sobremesa e vários de nossos pratos para se saboerar!
+                    </p>
+                    <div class="historia-img-wrapper">
+                        <img src="imagens/asd.jpg" alt="Prato especial da casa">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PÁGINAS 3 E 4: BANNER COM TRANSIÇÃO DE IMAGENS -->
+        <section class="banner-transicao-section">
+            <div class="banner-slides">
+                <!-- Imagem da Página 3 -->
+                <div class="banner-slide ativo">
+                    <img src="imagens/mfg.jpg" alt="Ambiente e mesa farta 1">
+                </div>
+                <!-- Imagem da Página 4 -->
+                <div class="banner-slide">
+                    <img src="imagens/rbjt.jpg" alt="Ambiente e mesa farta 2">
+                </div>
+            </div>
+
+            <div class="banner-overlay-content">
+                <h2>Um cardápio completo<br>de sabores únicos</h2>
+                <p>
+                    nossa casa é um convite a viver cada momento
+                    intensamente e saborear a vida com mesa farta e
+                    boas histórias
+                </p>
+            </div>
+        </section>
+
+        <!-- PÁGINA 5: DESTAQUES (CARNES, VEGANO, SOBREMESAS) -->
+        <section class="destaques-section">
+            <div class="destaques-grid">
+                
+                <!-- Coluna 1: Carnes -->
+                <article class="destaque-item">
+                    <div class="destaque-img-box">
+                        <img src="imagens/carne.jpg" alt="Carnes">
+                        <div class="faixa-verde">
+                            <span>Carnes</span>
+                        </div>
+                    </div>
+                    <p class="destaque-descricao">
+                        A melhor experiência para os amantes de carne. Trabalhamos com cortes nobres, preparados com técnicas exclusivas para realçar o máximo do sabor e da textura.
+                    </p>
+                </article>
+
+                <!-- Coluna 2: Vegano -->
+                <article class="destaque-item">
+                    <div class="destaque-img-box">
+                        <img src="imagens/vegano.jpg" alt="Vegano">
+                        <div class="faixa-verde">
+                            <span>Vegano</span>
+                        </div>
+                    </div>
+                    <p class="destaque-descricao">
+                        Criatividade vegetal que conquista qualquer paladar. Ingredientes frescos combinados de forma inovadora para criar refeições completas, leves e deliciosas.
+                    </p>
+                </article>
+
+                <!-- Coluna 3: Sobremesas -->
+                <article class="destaque-item">
+                    <div class="destaque-img-box">
+                        <img src="imagens/µ.jpg" alt="Sobremesas">
+                        <div class="faixa-verde">
+                            <span>Sobremesas</span>
+                        </div>
+                    </div>
+                    <p class="destaque-descricao">
+                        Amor à primeira colherada. Texturas cremosas, combinações surpreendentes e aquele pedacinho de felicidade irresistível.
+                    </p>
+                </article>
+
+            </div>
+
+            <!-- Imagem das formiguinhas no canto inferior direito da Página 5 -->
+            <div class="formigas-decoracao">
+                <img src="imagens/formiga.png" alt="Formiguinhas">
+            </div>
+        </section>
+
+        <!-- PÁGINA 6: BOTÃO VER CARDÁPIO + RODAPÉ -->
+        <section class="cta-cardapio-section">
+            <a href="#cardapio" class="btn-ver-cardapio btn-abrir-cardapio">Ver Cardápio</a>
+            <p class="aviso-kids">(Psiiiu! Temos menu kids para os pequenos também!)</p>
+        </section>
+
+        <footer class="rodape">
+            <div class="rodape-container">
+                
+                <!-- Lado Esquerdo do Rodapé: Logo, Frase e Redes Sociais -->
+                <div class="rodape-marca">
+                    <div class="rodape-logo-linha">
+                        <img src="imagens/logo.png" alt="Logo Sabor Quintal" class="rodape-logo">
+                        <div class="rodape-textos">
+                            <h3>Sabor Quintal</h3>
+                            <p>Grandes sabores nascem de pequenos detalhes</p>
+                        </div>
+                    </div>
+
+                    <div class="rodape-redes">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Lado Direito do Rodapé: Links em 2 colunas -->
+                <div class="rodape-links">
+                    <ul>
+                        <li><a href="#reservas">Reservas</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#cardapio" class="btn-abrir-cardapio">Cardápio</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#nossa-historia">Nossa História</a></li>
+                        <li><a href="#ajuda">Ajuda</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- =================================================================== -->
+    <!-- PARTE 2: PÁGINA DO CARDÁPIO (PÁGINAS 7 A 14 DO PDF)                 -->
+    <!-- =================================================================== -->
+    <div id="pagina-cardapio" class="oculto">
+
+        <!-- PÁGINAS 7, 8 E 9: SLIDER DO TOPO DO CARDÁPIO -->
+        <header class="cardapio-hero-slider">
+            
+            <!-- Marca fixa no canto superior esquerdo do Slider (igual páginas 7, 8 e 9) -->
+            <a href="#inicio" class="cardapio-topo-marca btn-voltar-inicio" title="Voltar para o início">
+                <img src="imagens/logo.png" alt="Logo Sabor Quintal">
+                <span>Sabor Quintal</span>
+            </a>
+
+            <!-- Slide 1: Página 7 (Bebidas) -->
+            <div class="cardapio-slide ativo">
+                <img src="imagens/Restaurante 201 (8).png" alt="Bebidas">
+                <div class="cardapio-slide-conteudo">
+                    <h2>BEBIDAS</h2>
+                    <p>Bebida na mão,<br>sorrisos no rosto e<br>energia no coração!</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Página 8 (Sobremesas) -->
+            <div class="cardapio-slide">
+                <img src="imagens/Captura de tela 2026-11-12 214855.png" alt="Sobremesas">
+                <div class="cardapio-slide-conteudo">
+                    <h2>SOBREMESAS</h2>
+                    <p>Guarde sempre um espaço<br>para o final feliz da sua<br>refeição</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Página 9 (Sabor que une) -->
+            <div class="cardapio-slide">
+                <img src="imagens/familia.png" alt="Sabor que une">
+                <div class="cardapio-slide-conteudo">
+                    <h2 class="titulo-cursivo">Sabor que une</h2>
+                    <p>Traga quem você ama para<br>almoçar e a sobremesa da<br>mesa fica por nossa conta!</p>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- BARRA SUSPENSA DE CATEGORIAS (PÁGINA 10 DO PDF) -->
+        <nav class="menu-categorias-fixo">
+            <ul>
+                <li><a href="#secao-entrada" class="aba-categoria ativa">Entrada</a></li>
+                <li><a href="#secao-prato-principal" class="aba-categoria">Prato Principal</a></li>
+                <li><a href="#secao-sobremesas" class="aba-categoria">Sobremesas</a></li>
+                <li><a href="#secao-menu-kids" class="aba-categoria">Bebidas</a></li>
+                <li><a href="#secao-bebidas" class="aba-categoria">Menu Kids</a></li>
+            </ul>
+        </nav>
+
+        <!-- CONTEÚDO DO CARDÁPIO -->
+        <main class="cardapio-conteudo">
+
+            <!-- PÁGINA 10: ENTRADA -->
+            <section id="secao-entrada" class="cardapio-secao">
+                <h2 class="secao-titulo">Entrada</h2>
+
+                <div class="pratos-grid">
+                    <!-- Item 1 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/dg.webp" alt="Pate de Calabresa com Maionese Temperada">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Pate de Calabresa com<br>Maionese Temperada</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/bolinha de golfe.jpg" alt="Arancini">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Arancini</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/fb.webp" alt="Carpaccio de salmão defumado">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Carpaccio de salmão<br>defumado</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/wef.webp" alt="Onion Rings">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Onion Rings</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PÁGINA 11: PRATO PRINCIPAL -->
+            <section id="secao-prato-principal" class="cardapio-secao">
+                <h2 class="secao-titulo">Prato Principal</h2>
+
+                <div class="pratos-grid">
+                    <!-- Item 1 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/gd.jpg" alt="Abadejo a vilarejo">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Abadejo a vilarejo</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/czx.jpg" alt="The One Steak">
+                        </div>
+                        <div class="prato-info">
+                            <h3>The One Steak</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/mg.jpg" alt="Nhoque ao Molho Sugo">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Nhoque ao Molho<br>Sugo</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/rata.jpg" alt="Ratatouille">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Ratatouille</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PÁGINA 12: SOBREMESAS -->
+            <section id="secao-sobremesas" class="cardapio-secao">
+                <h2 class="secao-titulo">Sobremesas</h2>
+
+                <div class="pratos-grid">
+                    <!-- Item 1 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/pudim choco.png" alt="Pudim Gelado com Calda de Chocolate">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Pudim Gelado com<br>Calda de Chocolate</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/gfbd.jpg" alt="Pavê de maracujá com biscoito de chocolate">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Pavê de maracujá<br>com biscoito de<br>chocolate</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/afs.jpg" alt="Milkshake de Ovomaltine">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Milkshake de<br>Ovomaltine</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/m.jpg" alt="Pudim de Maracujá">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Pudim de Maracujá</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PÁGINA 13: MENU KIDS -->
+            <section id="secao-menu-kids" class="cardapio-secao">
+                <h2 class="secao-titulo">Menu Kids</h2>
+
+                <div class="pratos-grid">
+                    <!-- Item 1 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/espaguete.jpg" alt="Espaguete à bolonhesa">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Espaguete à<br>bolonhesa</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/fas.webp" alt="Mini Pizzas Individuais">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Mini Pizzas<br>Individuais</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/qfs.jpg" alt="Hambúrguer com Batatas Fritas">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Hambúrguer com<br>Batatas Fritas</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/sg.jpg" alt="Prato Completo">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Prato Completo</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PÁGINA 14: BEBIDAS -->
+            <section id="secao-bebidas" class="cardapio-secao">
+                <h2 class="secao-titulo">Bebidas</h2>
+
+                <div class="pratos-grid">
+                    <!-- Item 1 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/agua.png" alt="Água Mineral">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Água Mineral</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/gdf.jpg" alt="Vinho Tinto Suave">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Vinho Tinto Suave</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/refri.png" alt="Refrigerantes">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Refrigerantes</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="prato-item">
+                        <div class="prato-foto">
+                            <img src="imagens/suco.png" alt="Sucos">
+                        </div>
+                        <div class="prato-info">
+                            <h3>Prato Completo</h3>
+                            <button class="btn-saiba-mais">Saiba mais</button>
+                             <!-- PÁGINA 6: BOTÃO VER CARDÁPIO + RODAPÉ -->
+                        <section class="cta-jogo-section">
+                        </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="secao-jogo">
+                <a href="puzzle.html" class="btn-quebra-cabeca">Jogar Quebra-Cabeça</a>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Arquivo JavaScript externo (que faremos na última etapa) -->
+    <script src="script.js"></script>
+</body>
+</html>

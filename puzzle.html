@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Quintal - Desafio dos 3 Níveis</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Estilizado com as cores do seu tema -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #050505;
+            color: #17213c;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* CABEÇALHO */
+        .cabecalho {
+            width: 100%;
+            min-height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: #ffffff;
+            border-bottom: 1px solid #000000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #17213c;
+        }
+
+        .logo div {
+            display: flex;
+            flex-direction: column;
+            line-height: 18px;
+            font-size: 17px;
+        }
+
+        .logo strong:first-child {
+            color: #17213c;
+        }
+
+        .logo strong:last-child {
+            color: #2a5a20;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 38px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #17213c;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .menu a.ativo {
+            color: #369436;
+        }
+
+        /* CONTEÚDO DO JOGO */
+        .jogo-container {
+            flex: 1;
+            padding: 40px 7%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: radial-gradient(circle at 85% 50%, #fff0f6 0%, #ffffff 45%);
+        }
+
+        .titulo-secao {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .titulo-secao h1 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            color: #17213c;
+        }
+
+        .titulo-secao h1 span {
+            color: #27521a;
+        }
+
+        .titulo-secao p {
+            color: #697287;
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        /* BARRA DE PROGRESSO E NÍVEIS */
+        .status-niveis {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+
+        .badge-nivel {
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: #f0e9ed;
+            color: #8a91a1;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .badge-nivel.ativo {
+            background: #2f8333;
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(12, 0, 4, 0.3);
+        }
+
+        .badge-nivel.concluido {
+            background: #2ecc71;
+            color: #ffffff;
+        }
+
+        /* ÁREA PRINCIPAL DO PUZZLE */
+        .puzzle-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            background: #141414;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid #2a2a2a;
+            max-width: 950px;
+            width: 100%;
+        }
+
+        .painel-superior {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .caixa-pecas, .caixa-tabuleiro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .caixa-pecas h3, .caixa-tabuleiro h3 {
+            font-size: 15px;
+            color: #bcc3d6;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        /* Tabuleiro 3 colunas x 4 linhas (12 peças) */
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 95px);
+            grid-template-rows: repeat(4, 80px);
+            gap: 3px;
+            background-color: #2c2c2c;
+            border: 3px solid #444;
+            border-radius: 10px;
+            padding: 4px;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.5);
+        }
+
+        .slot {
+            width: 95px;
+            height: 80px;
+            background-color: #1f1f1f;
+            border: 2px dashed #444;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .slot.hover-over {
+            background-color: #2a3b2a;
+            border-color: #2ecc71;
+        }
+
+        /* ÁREA ORGANIZADA DAS PEÇAS (FORA DA ESQUERDA) */
+        .pecas-pool {
+            width: 100%;
+            min-height: 120px;
+            border: 2px dashed #444;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            background: #1b1b1b;
+        }
+
+        /* PEÇAS COM FORMATO DE QUEBRA-CABEÇA (JIGSAW CLIP-PATH) */
+        .peca {
+            width: 95px;
+            height: 80px;
+            background-size: 285px 320px; /* 3 colunas * 95, 4 linhas * 80 */
+            cursor: grab;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.4));
+            transition: transform 0.15s, filter 0.15s;
+            /* Formato customizado aproximado de peça de puzzle */
+            clip-path: polygon(
+                0% 0%, 
+                35% 0%, 35% 10%, 65% 10%, 65% 0%, 
+                100% 0%, 
+                100% 35%, 90% 35%, 90% 65%, 100% 65%, 
+                100% 100%, 
+                65% 100%, 65% 90%, 35% 90%, 35% 100%, 
+                0% 100%, 
+                0% 65%, 10% 65%, 10% 35%, 0% 35%
+            );
+        }
+
+        .peca:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 6px 10px rgba(46, 204, 113, 0.4));
+        }
+
+        .peca:active {
+            cursor: grabbing;
+        }
+
+        .peca.selecionada {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 10px #2ecc71);
+            outline: 2px solid #2ecc71;
+        }
+
+        /* CAIXAS DE AVISO E VITÓRIA */
+        .caixa-aviso {
+            margin-top: 25px;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .aviso-fase {
+            background-color: #e6f9ed;
+            color: #0d5c2a;
+            border: 2px solid #2ecc71;
+        }
+
+        .aviso-final {
+            background: linear-gradient(135deg, #ff477e 0%, #ff6f9b 100%);
+            color: #ffffff;
+            border: none;
+        }
+
+        .aviso-final h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .oculto {
+            display: none !important;
+        }
+
+        /* BOTÕES DE AÇÃO */
+        .acoes-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-acao {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-proximo {
+            background: #ff477e;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(255, 71, 126, 0.25);
+        }
+
+        .btn-proximo:hover {
+            background: #ec326b;
+            transform: translateY(-2px);
+        }
+
+        .btn-reiniciar {
+            background: #17213c;
+            color: #ffffff;
+        }
+
+        .btn-reiniciar:hover {
+            background: #293148;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* RODAPÉ */
+        footer {
+            background: #10182d;
+            color: #777f94;
+            padding: 25px 8%;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: #ff477e;
+        }
+
+        @media (max-width: 768px) {
+            .puzzle-wrapper {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+        <div class="logo">
+            <span style="font-size: 28px;">🌿</span>
+            <div>
+                <strong>Sabor</strong>
+                <strong>Quintal</strong>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="#" class="ativo">Início</a>
+            <a href="#">Cardápio</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO DO JOGO -->
+    <main class="jogo-container">
+        
+        <div class="titulo-secao">
+            <h1>Desafio dos <span>3 Níveis</span></h1>
+            <p id="subtitulo">Complete a Fase 1 para desbloquear o próximo nível!</p>
+        </div>
+
+        <!-- INDICADOR DE FASES -->
+        <div class="status-niveis">
+            <div id="badge-1" class="badge-nivel ativo">Fase 1 <span>⭐</span></div>
+            <div id="badge-2" class="badge-nivel">Fase 2 <span>🔒</span></div>
+            <div id="badge-3" class="badge-nivel">Fase 3 <span>🔒</span></div>
+        </div>
+
+        <!-- QUEBRA-CABEÇA -->
+        <div id="area-puzzle" class="puzzle-wrapper">
+            
+            <!-- TABULEIRO E REFERÊNCIA -->
+            <div class="painel-superior">
+                <!-- TABULEIRO DO QUEBRA-CABEÇA -->
+                <div class="caixa-tabuleiro">
+                    <h3>Monte o Quebra-Cabeça (3 x 4)</h3>
+                    <div id="puzzle-board" class="puzzle-grid"></div>
+                </div>
+            </div>
+
+            <!-- PEÇAS EMBARALHADAS (ORGANIZADAS ABAIXO EM BANDEJA CENTRALIZADA) -->
+            <div class="caixa-pecas" style="width: 100%;">
+                <h3>Peças Disponíveis (Fase <span id="num-fase-pecas">1</span>) - Clique ou Arraste para encaixar</h3>
+                <div id="pecas-board" class="pecas-pool"></div>
+            </div>
+
+        </div>
+
+        <!-- AVISO DE CONCLUSÃO DA FASE (INTERMEDIÁRIA) -->
+        <div id="aviso-fase" class="caixa-aviso aviso-fase oculto">
+            <h3>👏 Excelente! Você completou a Fase <span id="fase-concluida-num">1</span>!</h3>
+            <p>Clique abaixo para ir ao próximo desafio.</p>
+            <div class="acoes-container" style="justify-content: center;">
+                <button id="btn-avancar" class="btn-acao btn-proximo">Ir para a Próxima Fase ➔</button>
+            </div>
+        </div>
+
+        <!-- AVISO DE PARABÉNS FINAL (3ª FASE CONCLUÍDA) -->
+        <div id="aviso-final" class="caixa-aviso aviso-final oculto">
+            <h2>🏆 PARABÉNS! VOCÊ VENCEU O DESAFIO! 🎉</h2>
+            <p>Você completou todos os 3 níveis do quebra-cabeça do Sabor Quintal!</p>
+            <div class="acoes-container" style="justify-content: center;">
+                <button id="btn-jogar-novamente" class="btn-acao btn-reiniciar">Jogar Novamente desde o Nível 1</button>
+            </div>
+        </div>
+
+        <div id="acoes-padrao" class="acoes-container">
+            <button id="btn-reiniciar-fase" class="btn-acao btn-reiniciar">Reiniciar esta fase</button>
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 <strong>Sabor Quintal</strong>. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- LÓGICA EM JAVASCRIPT -->
+    <script>
+        // Imagens de cada nível
+        const niveis = [
+            {
+                nivel: 1,
+                nome: "Urso",
+                imagem: "puzzle_assets/puzzle-img-1.jpeg"
+            },
+            {
+                nivel: 2,
+                nome: "Pique-Nique",
+                imagem: "puzzle_assets/puzzle-img-2.jpeg"
+            },
+            {
+                nivel: 3,
+                nome: "Ambiente Saboroso",
+                imagem: "puzzle_assets/puzzle-img-3.jpeg"
+            }
+        ];
+
+        let nivelAtualIndex = 0;
+        let pecaSelecionada = null;
+
+        const pecasBoard = document.getElementById('pecas-board');
+        const puzzleBoard = document.getElementById('puzzle-board');
+        const areaPuzzle = document.getElementById('area-puzzle');
+        const avisoFase = document.getElementById('aviso-fase');
+        const avisoFinal = document.getElementById('aviso-final');
+        const acoesPadrao = document.getElementById('acoes-padrao');
+        const btnAvancar = document.getElementById('btn-avancar');
+        const btnReiniciarFase = document.getElementById('btn-reiniciar-fase');
+        const btnJogarNovamente = document.getElementById('btn-jogar-novamente');
+
+        function atualizarBadges() {
+            for (let i = 0; i < 3; i++) {
+                const badge = document.getElementById(`badge-${i + 1}`);
+                badge.className = 'badge-nivel';
+                
+                if (i < nivelAtualIndex) {
+                    badge.classList.add('concluido');
+                    badge.querySelector('span').innerText = '✅';
+                } else if (i === nivelAtualIndex) {
+                    badge.classList.add('ativo');
+                    badge.querySelector('span').innerText = '⭐';
+                } else {
+                    badge.querySelector('span').innerText = '🔒';
+                }
+            }
+            document.getElementById('num-fase-pecas').innerText = nivelAtualIndex + 1;
+        }
+
+        function iniciarNivel() {
+            pecasBoard.innerHTML = '';
+            puzzleBoard.innerHTML = '';
+            avisoFase.classList.add('oculto');
+            avisoFinal.classList.add('oculto');
+            areaPuzzle.classList.remove('oculto');
+            acoesPadrao.classList.remove('oculto');
+            pecaSelecionada = null;
+
+            atualizarBadges();
+
+            const imgUrl = niveis[nivelAtualIndex].imagem;
+
+            // Criar os 12 slots no tabuleiro (3 colunas x 4 linhas)
+            for (let i = 0; i < 12; i++) {
+                const slot = document.createElement('div');
+                slot.classList.add('slot');
+                slot.dataset.index = i;
+                
+                slot.onclick = () => moverPecaParaSlot(slot);
+                slot.ondragover = (e) => {
+                    e.preventDefault();
+                    slot.classList.add('hover-over');
+                };
+                slot.ondragleave = () => slot.classList.remove('hover-over');
+                slot.ondrop = (e) => {
+                    e.preventDefault();
+                    slot.classList.remove('hover-over');
+                    soltarPecaDrag(e, slot);
+                };
+
+                puzzleBoard.appendChild(slot);
+            }
+
+            // Criar as 12 peças do nível atual
+            let pecas = [];
+            for (let i = 0; i < 12; i++) {
+                const peca = document.createElement('div');
+                peca.classList.add('peca');
+                peca.dataset.posicaoCorreta = i;
+                peca.draggable = true;
+                peca.style.backgroundImage = `url('${imgUrl}')`;
+
+                const col = i % 3;
+                const lin = Math.floor(i / 3);
+                const posX = col * -95;
+                const posY = lin * -80;
+
+                peca.style.backgroundPosition = `${posX}px ${posY}px`;
+
+                peca.onclick = (e) => {
+                    e.stopPropagation();
+                    selecionarPeca(peca);
+                };
+                
+                peca.ondragstart = (e) => {
+                    e.dataTransfer.setData('text/plain', i);
+                };
+
+                pecas.push(peca);
+            }
+
+            // Permitir devolver a peça clicando na área de peças caso esteja no tabuleiro
+            pecasBoard.ondragover = (e) => e.preventDefault();
+            pecasBoard.ondrop = (e) => {
+                e.preventDefault();
+                if (pecaSelecionada) {
+                    pecasBoard.appendChild(pecaSelecionada);
+                    pecaSelecionada.classList.remove('selecionada');
+                    pecaSelecionada = null;
+                }
+            };
+
+            // Embaralhar as peças aleatoriamente
+            pecas.sort(() => Math.random() - 0.5);
+            pecas.forEach(p => pecasBoard.appendChild(p));
+        }
+
+        function selecionarPeca(peca) {
+            if (pecaSelecionada) {
+                pecaSelecionada.classList.remove('selecionada');
+            }
+            if (pecaSelecionada === peca) {
+                pecaSelecionada = null;
+            } else {
+                pecaSelecionada = peca;
+                peca.classList.add('selecionada');
+            }
+        }
+
+        function moverPecaParaSlot(slot) {
+            if (pecaSelecionada && slot.children.length === 0) {
+                slot.appendChild(pecaSelecionada);
+                pecaSelecionada.classList.remove('selecionada');
+                pecaSelecionada = null;
+                verificarVitoria();
+            } else if (!pecaSelecionada && slot.children.length > 0) {
+                // Se o slot já tem peça e nenhuma está selecionada, seleciona ela para trocar
+                selecionarPeca(slot.querySelector('.peca'));
+            }
+        }
+
+        function soltarPecaDrag(e, slot) {
+            if (slot.children.length === 0) {
+                const indexPeca = e.dataTransfer.getData('text/plain');
+                const peca = document.querySelector(`.peca[data-posicao-correta='${indexPeca}']`);
+                if (peca) {
+                    slot.appendChild(peca);
+                    verificarVitoria();
+                }
+            }
+        }
+
+        function verificarVitoria() {
+            const slots = document.querySelectorAll('.slot');
+            let montadoCorretamente = true;
+
+            slots.forEach(slot => {
+                const peca = slot.querySelector('.peca');
+                if (!peca || peca.dataset.posicaoCorreta !== slot.dataset.index) {
+                    montadoCorretamente = false;
+                }
+            });
+
+            if (montadoCorretamente) {
+                concluirFase();
+            }
+        }
+
+        function concluirFase() {
+            acoesPadrao.classList.add('oculto');
+            
+            if (nivelAtualIndex < 2) {
+                document.getElementById('fase-concluida-num').innerText = nivelAtualIndex + 1;
+                avisoFase.classList.remove('oculto');
+            } else {
+                areaPuzzle.classList.add('oculto');
+                avisoFinal.classList.remove('oculto');
+                nivelAtualIndex = 3; 
+                atualizarBadges();
+            }
+        }
+
+        btnAvancar.addEventListener('click', () => {
+            nivelAtualIndex++;
+            iniciarNivel();
+        });
+
+        btnReiniciarFase.addEventListener('click', iniciarNivel);
+
+        btnJogarNovamente.addEventListener('click', () => {
+            nivelAtualIndex = 0;
+            iniciarNivel();
+        });
+
+        iniciarNivel();
+    </script>
+</body>
+</html>
